@@ -133,16 +133,18 @@ Fügen Sie eine <xref:Microsoft.Extensions.Configuration.IConfiguration>-Instanz
 <h2>Wheels</h2>
 
 <ul>
-    <li>Count: @Configuration["wheels:count"]</li>
-    <li>Brand: @Configuration["wheels:brand"]</li>
-    <li>Type: @Configuration["wheels:brand:type"]</li>
-    <li>Year: @Configuration["wheels:year"]</li>
+    <li>Count: @wheelsSection["count"]</li>
+    <li>Brand: @wheelsSection["brand"]</li>
+    <li>Type: @wheelsSection["brand:type"]</li>
+    <li>Year: @wheelsSection["year"]</li>
 </ul>
 
 @code {
+    IConfigurationSection wheelsSection;
+    
     protected override void OnInitialized()
     {
-        var wheelsSection = Configuration.GetSection("wheels");
+        wheelsSection = Configuration.GetSection("wheels");
         
         ...
     }
